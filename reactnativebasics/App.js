@@ -1,27 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View } from 'react-native';
-import AlertView from './views/AlertView';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <View style={styles.mainContainer}>
+      <View style={styles.inputContainer}>
+        <TextInput style={styles.inputBox} placeholder='Enter task details' />
+        <Button title='Add Task' />
+      </View>
+      <View>
+        <Text>Your Tasks:</Text>
 
-      <AlertView/>
-      <Text style={styles.text}>Welcome to my app!</Text>
+
+      </View>
+
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  mainContainer:  {
+    paddingTop: 45,
+    paddingHorizontal: 15,
   },
-  text: {
-    color: "darkslateblue",
-     fontSize: 30
+  inputContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  inputBox: {
+    width: '75%',
+    borderColor: 'black',
+    borderWidth: 1,
+    padding: 5,
+    paddingLeft: 10,
+    marginRight: 3,
+    borderRadius: 5,
   }
 });
 
