@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useState } from 'react';
 
 export default function App() {
@@ -30,14 +30,17 @@ export default function App() {
       </View>
       <View style={styles.taskListSection}>
         <Text style={styles.taskOverviewTitle}>Your Tasks:</Text>
+
+        <ScrollView>
         {taskList.map((task, index) => {
 
           return ( 
-          <View style={styles.taskItemStyle}>
-          <Text style={styles.taskItemTextStyle} key={index}>{task}</Text>
+          <View style={styles.taskItemStyle} key={index}>
+            <Text style={styles.taskItemTextStyle}>{index + 1}:{task}</Text>
           </View>
           )
         })}
+        </ScrollView>
 
 
       </View>
