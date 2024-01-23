@@ -1,4 +1,4 @@
-import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, FlatList, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useState } from 'react';
 
 export default function App() {
@@ -12,7 +12,7 @@ export default function App() {
   }
 
   function addNewTask() {
-    setTaskList((currentList) =>  [...currentList, task])
+    setTaskList((currentList) =>  [...currentList, {text: task, id: Math.random().toString()}])
   }
 
   return (
@@ -30,8 +30,22 @@ export default function App() {
       </View>
       <View style={styles.taskListSection}>
         <Text style={styles.taskOverviewTitle}>Your Tasks:</Text>
+        <FlatList
+          data={taskList}
+          renderItem={({item, index}) => {
+            return (
+            <View style={styles.taskItemStyle}>
+              <Text style={styles.taskItemTextStyle}>{index + 1}:{item.text}</Text>
+            </View>
+            )
+          }}
+          keyExtractor={(item, index) => {
+            return item.id
+          }}
 
-        <ScrollView>
+        />
+
+        {/*<ScrollView>
         {taskList.map((task, index) => {
 
           return ( 
@@ -40,7 +54,7 @@ export default function App() {
           </View>
           )
         })}
-        </ScrollView>
+      </ScrollView>*/}
 
 
       </View>
